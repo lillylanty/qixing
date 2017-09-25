@@ -1,0 +1,90 @@
+:host /deep/ .ui-overlaypanel{
+    position:fixed;
+    width:300px;
+}
+.wb-device-style{
+    position: relative;
+    background-color:white;
+}
+.wb-device-style .device-operate-area{
+    /*height: 32px;*/
+    display:flex;
+    justify-content: space-between;
+}
+.wb-device-style .control-button-box{
+    padding-left:5px;
+    display:flex;
+    align-items: center;
+    border-top: 1px solid #d6d6d6;
+}
+.wb-device-style .control-button-box a{
+    width:22px;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+}
+.wb-device-style .control-button-box  .SpeedBox{
+    position: absolute;
+    left:85px;
+    bottom: -2px;
+}
+.device-control-btn{
+    display:flex;
+    width:26px;
+    align-self: stretch;
+    align-items: center;
+    justify-content:center;
+}
+.device-info-name{
+    width:150px;
+    /*line-height:32px;*/
+    text-align:center;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+/*.devicelist {*/
+  /*width: 100px;*/
+/*}*/
+
+.devicedetail {
+  width: 180px;
+}
+
+
+
+/*.mat-fab {
+  border-radius: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .mat-raised-button {
+  border-radius: 2px;
+}
+
+.mat-fab .mat-icon, .mat-fab i {
+  padding: 0;
+}*/
+
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+.material-icons.md-light { color: rgba(255, 0, 0, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 0, 0, 0.3); }
+
+
+
+.example-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+.example-selected-value {
+    margin: 15px 0;
+}

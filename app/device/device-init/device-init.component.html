@@ -1,0 +1,218 @@
+<!--<div class="wb-deviceinit-style">
+<div class="ui-g">
+	<div class="ui-g">
+		<div class="ui-g-6">
+			<ul class="init-step">
+				&lt;!&ndash;<li>关节连接X轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint1)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.connect.joint1?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.connect.joint1?true:false}"></span></li>
+				<li>关节连接Y轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint2)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.connect.joint2?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.connect.joint2?true:false}"></span></li>
+				<li>关节连接Z轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint3)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.connect.joint3?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.connect.joint3?true:false}"></span></li>
+				<li>关节连接R轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint4)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.connect.joint4?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.connect.joint4?true:false}"></span></li>
+				<li>主IO连接: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.main_io)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.connect.main_io?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.connect.main_io?true:false}"></span></li>
+				<li>工具IO连接: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.tool_io)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.connect.tool_io?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.connect.tool_io?true:false}"></span></li>
+				<li>正在执行初始化关节X轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint1)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.executing.joint1?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.executing.joint1?true:false}"></span></li>
+				<li>正在执行初始化关节Y轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint2)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.executing.joint2?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.executing.joint2?true:false}"></span></li>
+				<li>正在执行初始化关节Z轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint4)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.executing.joint3?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.executing.joint4?true:false}"></span></li>
+				<li>正在执行初始化关节R轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint3)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.executing.joint4?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.executing.joint3?true:false}"></span></li>
+				<li>关节机械位置寻找X轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint1)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.result.joint1?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.result.joint1?true:false}"></span></li>
+				<li>关节机械位置寻找Y轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint2)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.result.joint2?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.result.joint2?true:false}"></span></li>
+				<li>关节机械位置寻找Z轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint3)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.result.joint3?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.result.joint3?true:false}"></span></li>
+				<li>关节机械位置寻找R轴: <span [ngClass]="{'fa fa-fw':true,'fa-remove':(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint4)?true:false,'fa-check':deviceService.device.initData&&deviceService.device.initData.result.joint4?true:false,'failed': deviceService.device.initData&&!deviceService.device.initData.result.joint4?true:false}"></span></li>
+				<li>寻找机械位置模式: <span>{{deviceService.device.initData? deviceService.device.initData.mode === 0 ?'自动':deviceService.device.initData.mode === 1?'手动':'拖拽':'无'}}</span></li>&ndash;&gt;
+        <li>关节连接X轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint1?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint1)?true:false" style="color: red;">clear</md-icon></li>
+        <li>关节连接Y轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint2?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint2)?true:false" style="color: red;">clear</md-icon></li>
+        <li>关节连接Z轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint3?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint3)?true:false" style="color: red;">clear</md-icon></li>
+        <li>关节连接R轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint4?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint4)?true:false" style="color: red;">clear</md-icon></li>
+        <li>主IO连接: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.main_io?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.main_io)?true:false" style="color: red;">clear</md-icon></li>
+        <li>工具IO连接: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.tool_io?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.tool_io)?true:false" style="color: red;">clear</md-icon></li>
+        <li>正在执行初始化关节X轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint1?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint1)?true:false" style="color: red;">clear</md-icon></li>
+        <li>正在执行初始化关节Y轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint2?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint2)?true:false" style="color: red;">clear</md-icon></li>
+        <li>正在执行初始化关节Z轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint3?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint4)?true:false" style="color: red;">clear</md-icon></li>
+        <li>正在执行初始化关节R轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint4?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint3)?true:false" style="color: red;">clear</md-icon></li>
+        <li>关节机械位置寻找X轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint1?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint1)?true:false" style="color: red;">clear</md-icon></li>
+        <li>关节机械位置寻找Y轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint2?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint2)?true:false" style="color: red;">clear</md-icon></li>
+        <li>关节机械位置寻找Z轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint3?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint3)?true:false" style="color: red;">clear</md-icon></li>
+        <li>关节机械位置寻找R轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint4?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint4)?true:false" style="color: red;">clear</md-icon></li>
+        <li>寻找机械位置模式: <span>{{deviceService.device.initData? deviceService.device.initData.mode === 0 ?'自动':deviceService.device.initData.mode === 1?'手动':'拖拽':'无'}}</span></li>
+        &lt;!&ndash;<li>初始化步骤: <span>{{deviceService.device.initData?deviceService.device.initData.stage === 0?'未初始化':deviceService.device.initData.stage === 1?'正在执行':deviceService.device.initData.stage ===2?'执行完成':'执行错误':'无'}}</span></li>&ndash;&gt;
+			</ul>
+		</div>
+		<div class="ui-g-6">
+			<div class="ui-g">
+				<div class="ui-g-6">
+					<div class="radiocenter">
+						<h3>初始化方式：</h3>
+						<div class="ui-g">
+							&lt;!&ndash;修复点标志：qazxsw&ndash;&gt;
+							&lt;!&ndash;<div class="ui-g-12"><qx-radioButton name="method" value="0" label="自动"  [(ngModel)]="method"></qx-radioButton></div>
+							<div class="ui-g-12"><qx-radioButton name="method" value="1" label="手动" [(ngModel)]="method"></qx-radioButton></div>
+							<div class="ui-g-12"><qx-radioButton name="method" value="2" label="拖拽" [(ngModel)]="method"></qx-radioButton></div>&ndash;&gt;
+              <md-radio-group [(ngModel)]="method">
+                <md-radio-button [value]="0">自动</md-radio-button>
+                <md-radio-button [value]="1">手动</md-radio-button>
+                <md-radio-button [value]="2">拖拽</md-radio-button>
+              </md-radio-group>
+						</div>
+					</div>
+				</div>
+				<div class="ui-g-6">
+					<h3>参数设置：</h3>
+					<ul class="para-set-list">
+						<li><span>X:</span><input type="number" [(ngModel)]="manualParameter.x" step="0.1" [disabled]="method === '1' ? false :true"
+							/></li>
+						<li><span>Y:</span><input type="number" [(ngModel)]="manualParameter.y" step="0.1" [disabled]="method === '1' ? false :true"
+							/></li>
+						<li><span>Z:</span><input type="number" [(ngModel)]="manualParameter.z" step="0.1" [disabled]="method === '1' ? false :true"
+							/></li>
+						<li><span>R:</span><input type="number" [(ngModel)]="manualParameter.r" step="0.1" [disabled]="method === '1' ? false :true"
+							/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="ui-g">
+				<div class="buttoncenter">
+					&lt;!&ndash;修复点标志：qazxsw&ndash;&gt;
+					&lt;!&ndash;<button pButton type="button" (click)="deviceInit()" [disabled]="deviceService.device.isIniting" label="{{deviceService.device.isIniting?'初始化...':'开始'}}"></button>&ndash;&gt;
+					&lt;!&ndash;<button pButton type="button" (click)="deviceInit()" [disabled]="deviceService.device.isIniting"></button>
+					<button pButton type="button" (click)="deviceInitHasComplete()" [disabled]="!(deviceService.device.initData && deviceService.device.initData.result.joint1 && deviceService.device.initData.result.joint2 && deviceService.device.initData.result.joint3 && deviceService.device.initData.result.joint4)" label="完成"></button>&ndash;&gt;
+          <button (click)="deviceInit()" [disabled]="deviceService.device.isIniting" md-raised-button>{{deviceService.device.isIniting?'初始化...':'开始'}}</button>
+          <button md-raised-button (click)="deviceInitHasComplete()" [disabled]="!(deviceService.device.initData && deviceService.device.initData.result.joint1 && deviceService.device.initData.result.joint2 && deviceService.device.initData.result.joint3 && deviceService.device.initData.result.joint4)">完成</button>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>-->
+
+
+<!--<md-grid-list cols="4" rowHeight="100px">
+  <md-grid-tile [colspan]="2" [rowspan]="4">
+    <ul class="init-step">
+      <li>关节连接X轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint1?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint1)?true:false" style="color: red;">clear</md-icon></li>
+      <li>关节连接Y轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint2?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint2)?true:false" style="color: red;">clear</md-icon></li>
+      <li>关节连接Z轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint3?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint3)?true:false" style="color: red;">clear</md-icon></li>
+      <li>关节连接R轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.joint4?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.joint4)?true:false" style="color: red;">clear</md-icon></li>
+      <li>主IO连接: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.main_io?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.main_io)?true:false" style="color: red;">clear</md-icon></li>
+      <li>工具IO连接: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.connect.tool_io?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.connect.tool_io)?true:false" style="color: red;">clear</md-icon></li>
+      <li>正在执行初始化关节X轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint1?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint1)?true:false" style="color: red;">clear</md-icon></li>
+      <li>正在执行初始化关节Y轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint2?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint2)?true:false" style="color: red;">clear</md-icon></li>
+      <li>正在执行初始化关节Z轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint3?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint4)?true:false" style="color: red;">clear</md-icon></li>
+      <li>正在执行初始化关节R轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.executing.joint4?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.executing.joint3)?true:false" style="color: red;">clear</md-icon></li>
+      <li>关节机械位置寻找X轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint1?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint1)?true:false" style="color: red;">clear</md-icon></li>
+      <li>关节机械位置寻找Y轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint2?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint2)?true:false" style="color: red;">clear</md-icon></li>
+      <li>关节机械位置寻找Z轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint3?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint3)?true:false" style="color: red;">clear</md-icon></li>
+      <li>关节机械位置寻找R轴: <md-icon *ngIf="deviceService.device.initData&&deviceService.device.initData.result.joint4?true:false" style="color: green;">done</md-icon><md-icon *ngIf="(!deviceService.device.initData)||(deviceService.device.initData&&!deviceService.device.initData.result.joint4)?true:false" style="color: red;">clear</md-icon></li>
+      <li>寻找机械位置模式: <span style="margin-right:4px;">{{deviceService.device.initData? deviceService.device.initData.mode === 0 ?'自动':deviceService.device.initData.mode === 1?'手动':'拖拽':'无'}}</span></li>
+    </ul>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="3">
+    <div class="radiocenter">
+      <h3>初始化方式：</h3>
+      <div class="ui-g" style="margin-left: 30px;">
+        <md-radio-group [(ngModel)]="method">
+          <md-radio-button [value]="0">自动</md-radio-button>
+          <br>
+          <br>
+          <md-radio-button [value]="1">手动</md-radio-button>
+          <br>
+          <br>
+          <md-radio-button [value]="2">拖拽</md-radio-button>
+        </md-radio-group>
+      </div>
+    </div>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="3">
+    <md-list>
+      <h3>参数设置：</h3>
+      <md-list-item>
+        <span style="margin-right: .6rem;">X:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.x" step="0.1" [disabled]="method === '1' ? false :true"/>
+      </md-list-item>
+      <md-list-item>
+        <span style="margin-right: .6rem;">Y:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.y" step="0.1" [disabled]="method === '1' ? false :true"/>
+      </md-list-item>
+      <md-list-item>
+        <span style="margin-right: .6rem;">Z:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.z" step="0.1" [disabled]="method === '1' ? false :true"/>
+      </md-list-item>
+      <md-list-item>
+        <span style="margin-right: .6rem;">R:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.r" step="0.1" [disabled]="method === '1' ? false :true"/>
+      </md-list-item>
+    </md-list>
+    &lt;!&ndash;<h3>参数设置：</h3>
+    <ul class="ui-g para-set-list">
+      <li><span>X:</span><input type="number" [(ngModel)]="manualParameter.x" step="0.1" [disabled]="method === '1' ? false :true"
+      /></li>
+      <li><span>Y:</span><input type="number" [(ngModel)]="manualParameter.y" step="0.1" [disabled]="method === '1' ? false :true"
+      /></li>
+      <li><span>Z:</span><input type="number" [(ngModel)]="manualParameter.z" step="0.1" [disabled]="method === '1' ? false :true"
+      /></li>
+      <li><span>R:</span><input type="number" [(ngModel)]="manualParameter.r" step="0.1" [disabled]="method === '1' ? false :true"
+      /></li>
+    </ul>&ndash;&gt;
+  </md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="1">
+    <div class="buttoncenter">
+      <button style="margin-left: 80px;" (click)="deviceInit()" [disabled]="deviceService.device.isIniting || deviceService.device.initDisabled" md-raised-button>{{deviceService.device.isIniting?'初始化...': deviceService.device.initDisabled?'已初始化':'开始'}}</button>
+      <button style="margin-left: 80px;" md-raised-button (click)="deviceInitHasComplete()" [disabled]="!(deviceService.device.initData && deviceService.device.initData.result.joint1 && deviceService.device.initData.result.joint2 && deviceService.device.initData.result.joint3 && deviceService.device.initData.result.joint4)">完成</button>
+    </div>
+  </md-grid-tile>
+</md-grid-list>-->
+
+<div style="width: 450px; height: 400px; position: relative;"><h3>设备初始化</h3>
+  <h3 style="position: absolute; right: 20px; top: -24px; cursor: pointer;">
+    <md-icon (click)="closeDialog(true);">clear</md-icon>
+  </h3>
+  <md-grid-list cols="2" rowHeight="90px">
+    <md-grid-tile [colspan]="1" [rowspan]="3">
+      <div class="radiocenter">
+        <h3>初始化方式：</h3>
+        <div class="ui-g" style="margin-left: 30px;">
+          <md-radio-group [(ngModel)]="method">
+            <md-radio-button [value]="0">自动</md-radio-button>
+            <br>
+            <br>
+            <md-radio-button [value]="1">手动</md-radio-button>
+            <br>
+            <br>
+            <md-radio-button [value]="2">拖拽</md-radio-button>
+          </md-radio-group>
+        </div>
+      </div>
+    </md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="3">
+      <md-list>
+        <h3>参数设置：</h3>
+        <md-list-item>
+          <span style="margin-right: .6rem;">X:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.x" step="0.1" [disabled]="method === 1 ? false :true"/>
+        </md-list-item>
+        <md-list-item>
+          <span style="margin-right: .6rem;">Y:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.y" step="0.1" [disabled]="method === 1 ? false :true"/>
+        </md-list-item>
+        <md-list-item>
+          <span style="margin-right: .6rem;">Z:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.z" step="0.1" [disabled]="method === 1 ? false :true"/>
+        </md-list-item>
+        <md-list-item>
+          <span style="margin-right: .6rem;">R:</span><input style="width: 80px;" type="number" [(ngModel)]="manualParameter.r" step="0.1" [disabled]="method === 1 ? false :true"/>
+        </md-list-item>
+      </md-list>
+    </md-grid-tile>
+    <md-grid-tile [colspan]="2" [rowspan]="1">
+      <md-list>
+        <md-list-item *ngIf="deviceService.device.isIniting">
+          <md-progress-bar [color]="'primary'" [mode]="'indeterminate'"></md-progress-bar>
+        </md-list-item>
+        <md-list-item>
+          <div class="buttoncenter">
+            <button style="margin-left: 80px;" (click)="deviceInit()" [disabled]="deviceService.device.isIniting || deviceService.device.initDisabled" md-raised-button>{{deviceService.device.isIniting?'初始化...': deviceService.device.initDisabled?'已初始化':'开始'}}</button>
+            <button style="margin-left: 80px;" md-raised-button (click)="closeDialog(true);" [disabled]="!deviceService.device.initDisabled">完成</button>
+          </div>
+        </md-list-item>
+      </md-list>
+      <!--<md-progress-bar *ngIf="!deviceService.device.isIniting" [color]="'primary'" [mode]="'indeterminate'"></md-progress-bar>
+      <div class="buttoncenter">
+        <button style="margin-left: 80px;" (click)="deviceInit()" [disabled]="deviceService.device.isIniting || deviceService.device.initDisabled" md-raised-button>{{deviceService.device.isIniting?'初始化...': deviceService.device.initDisabled?'已初始化':'开始'}}</button>
+        <button style="margin-left: 80px;" md-raised-button (click)="deviceInitHasComplete()" [disabled]="!(deviceService.device.initData && deviceService.device.initData.result.joint1 && deviceService.device.initData.result.joint2 && deviceService.device.initData.result.joint3 && deviceService.device.initData.result.joint4)">完成</button>
+      </div>-->
+    </md-grid-tile>
+  </md-grid-list>
+</div>
+
+

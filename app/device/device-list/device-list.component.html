@@ -1,0 +1,89 @@
+<div fxLayout="column" class="wb-programlist-style" style="position: relative;">
+    <h3 flex fxLayoutAlign="start center" style="margin: 0px;">
+        设备列表
+    </h3>
+    <h3 style="position: absolute; right: 0; top: -24px; cursor: pointer;">
+        <md-icon (click)="closeDialog(true);">clear</md-icon>
+    </h3>
+    <div flex fxLayout="row" fxLayoutAlign="space-between center" style="margin:10px 0px">
+        <div fxFlex ="500px">
+            <button md-raised-button type="button" [disabled]="refreshFlag" small (click)="getDevicesList()">刷新</button>
+            <button md-raised-button type="button" small (click)="connectDevice(selectedDevice)" [disabled]="selectedDevice && selectedDevice.status < 500 &&  !selectedDevice.controlled && !deviceService.device ?false:true">控制</button>
+            <button md-raised-button type="button" small (click)="disconnectDevice()" [disabled]="deviceService.device && selectedDevice && deviceService.device.serial===selectedDevice.serial? false:true">释放</button>
+            <button md-raised-button type="button" small (click)="deleteLocalDevices([selectedDevice])" [disabled]="selectedDevice && selectedDevice.status > 500 ? false:true">删除</button>
+            <button md-raised-button type="button" small (click)="requestDevice(selectedDevice.serial)" [disabled]="selectedDevice?selectedDevice.status > 500 ?true: deviceService.device && deviceService.device.serial === selectedDevice.serial?true:selectedDevice.controlled?false:true:true">申请</button>
+        </div>
+        <div fxFlex [style.visibility]="refreshFlag?'visible' : 'hidden'">
+            <md-progress-spinner [mode]="'indeterminate'" [value]="50"></md-progress-spinner>
+            <span style="color: #3f51b5; font-size: 24px;">
+               正在刷新…
+           </span>
+        </div>
+        <div fxFlex ="180px" fxLayoutAlign="space-around center">
+            <i class="material-icons ic-search" title="搜索"></i>
+            <input #gb type="text" size="15" (keyup)="searchDev(gb, $event);">
+        </div>
+    </div>
+    <div flex>
+        <!--<qx-dataTable [value]="deviceService.devices" scrollable="true" scrollHeight="300px" [rows]="15" [paginator]="true" [pageLinks]="3"
+            [rowsPerPageOptions]="[10,20,50]" [globalFilter]="gb" selectionMode="single" [(selection)]="selectedDevice">
+            <qx-column field="name" header="设备名称" [style]="{'width':'130px','text-align':'center'}"></qx-column>
+            <qx-column field="ip" header="IP地址" [style]="{'width':'130px','text-align':'center'}"></qx-column>
+            <qx-column field="model" header="型号" [style]="{'width':'120px','text-align':'center'}"></qx-column>
+            <qx-column field="version" header="版本号" [style]="{'width':'120px','text-align':'center'}"></qx-column>
+            <qx-column header="状态" [style]="{'width':'110px','text-align':'center'}">
+                <ng-template let-col let-device='rowData' pTemplate type="body">
+                    <span [style.color]="device.status > 500 ? 'black' : device.controlled ? deviceService.device && deviceService.device.serial === device.serial ? 'green' : 'red' : 'blue'">
+                    {{device.status > 500 ? '离线' : device.controlled ? deviceService.device && deviceService.device.serial === device.serial ? '控制中' : '不可控' : '可控'}}
+                </span>
+                </ng-template>
+            </qx-column>
+            <qx-column field="username" header="控制者" [style]="{'width':'100px','text-align':'center'}"></qx-column>
+            <qx-column field="ui_ip" header="控制者ip" [style]="{'width':'150px','text-align':'center'}"></qx-column>
+        </qx-dataTable>-->
+        <table border="1" style="border-spacing: 0; border-collapse: collapse;">
+            <thead style="background: #D5D5D5;">
+            <tr>
+                <th style="width: 130px; text-align: center;">设备名称</th>
+                <th style="width: 130px; text-align: center;">IP地址</th>
+                <th style="width: 120px; text-align: center;">型号</th>
+                <th style="width: 120px; text-align: center;">版本号</th>
+                <th style="width: 110px; text-align: center;">状态</th>
+                <th style="width: 100px; text-align: center;">控制者</th>
+                <th style="width: 150px; text-align: center;">控制者ip</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="showListFlag" style="text-align: center;">
+            <tr *ngFor = "let device of deviceService.devices" (click)="changeBgcolor($event,device);" [style.background]="device.test?'pink':''">
+                <td>{{device.name}}</td>
+                <td>{{device.device_ip}}</td>
+                <td>{{device.model}}</td>
+                <td>{{device.version}}</td>
+                <td [style.color]="device.status > 500 ? 'black' : device.controlled ? deviceService.device && deviceService.device.serial === device.serial ? 'green' : 'red' : 'blue'">
+                    {{device.status > 500 ? '离线' : device.controlled ? deviceService.device && deviceService.device.serial === device.serial ? '控制中' : '不可控' : '可控'}}
+                </td>
+                <td>{{device.username}}</td>
+                <td>{{device.controller_ip}}</td>
+            </tr>
+            </tbody>
+            <tbody *ngIf="!showListFlag" style="text-align: center;">
+            <tr *ngFor = "let device of newDevices" (click)="changeBgcolor($event,device);" [style.background]="device.test?'pink':''">
+                <td>{{device.name}}</td>
+                <td>{{device.device_ip}}</td>
+                <td>{{device.model}}</td>
+                <td>{{device.version}}</td>
+                <td [style.color]="device.status > 500 ? 'black' : device.controlled ? deviceService.device && deviceService.device.serial === device.serial ? 'green' : 'red' : 'blue'">
+                    {{device.status > 500 ? '离线' : device.controlled ? deviceService.device && deviceService.device.serial === device.serial ? '控制中' : '不可控' : '可控'}}
+                </td>
+                <td>{{device.username}}</td>
+                <td>{{device.controller_ip}}</td>
+            </tr>
+            </tbody>
+            <tbody *ngIf="showNotice" style="text-align: center;">
+            <tr>
+                <td colspan="7">未搜索到相应设备！</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

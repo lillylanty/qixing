@@ -1,0 +1,104 @@
+/*:host >>> .wb-deviceinit-style .ui-steps .ui-steps-item {
+            width: 25%;
+}
+:host >>> .wb-deviceinit-style .ui-steps.steps-custom {
+    margin-bottom: 30px;
+}
+:host >>> .wb-deviceinit-style .ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
+    height: 10px;
+    padding: 0 1em;
+}
+:host >>> .wb-deviceinit-style .ui-steps.steps-custom .ui-steps-item .ui-steps-number {
+    background-color: #0081c2;
+    color: #FFFFFF;
+    display: inline-block;
+    width: 30px;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+:host >>> .wb-deviceinit-style .ui-steps.steps-custom .ui-steps-item .ui-steps-title {
+    color: #555555;
+}
+:host >>> .wb-deviceinit-style button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only{
+    height:35px;
+}
+:host >>> .wb-deviceinit-style .ui-fluid .ui-spinner{
+    width:60%;
+}
+:host >>> .wb-deviceinit-style .radiocenter .ui-radiobutton{
+    margin:5px 0;
+}*/
+.wb-deviceinit-style .buttoncenter{
+    margin-top:60px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.wb-deviceinit-style .buttoncenter button{
+    margin:0px 10px;
+    width: 100px;
+}
+.wb-deviceinit-style .radiocenter h3{
+    margin-bottom:30px;
+}
+.wb-deviceinit-style .radiocenter>div{
+    padding-left:10px;
+}
+.wb-deviceinit-style .parasetbox>div{
+    margin: 2 0px;
+}
+.wb-deviceinit-style .failed{
+    color:red;
+}
+.init-method-choose{
+    list-style: none;
+}
+.init-method-choose li {
+    display: flex;
+    height: 25px;
+    align-items: center;
+}
+.init-method-choose li span {
+    margin-right: 5px;
+}
+
+
+.para-set-list li{
+    list-style-type:none;
+    margin:6px 0;
+}
+.para-set-list li span{
+    margin-right: .6rem;
+}
+
+.para-set-list li input{
+    width: 80px;
+}
+
+.init-step li{
+    display:flex;
+    justify-content:space-between;
+}
+.init-step li span{
+    margin-right:70px;
+}
+:host >>> figure.mat-figure{
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+:host >>> md-list.mat-list {
+  padding-top: 0;
+}
+
+:host >>> .mat-list-item-content.mat-ripple {
+  height: 38px;
+}
+
+:host >>> md-icon.material-icons.mat-icon {
+  margin-left: 105px;
+}
+
+.mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .mat-raised-button {
+    line-height: 32px;
+}

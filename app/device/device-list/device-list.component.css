@@ -1,0 +1,22 @@
+.wb-devicelist-style .icon-btn,.wb-devicelist-style .icon-btn{
+    margin-right: 5px;
+    border:1px solid rgba(186, 186, 186, 0);
+    border-radius: 4px;
+    width: 28px;
+    height: 20px;
+    line-height: 20px;
+}
+.wb-devicelist-style .icon-btn:hover{
+    box-shadow: 0px 0px 4px #ccc;
+    border:1px solid rgb(186, 186, 186);
+    background-color:rgb(243, 243, 243);
+}
+:host() /deep/ .ui-datatable-scrollable-body{
+    overflow-y: scroll;
+}
+
+[_nghost-c24] {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}

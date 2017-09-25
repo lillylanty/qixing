@@ -1,0 +1,28 @@
+
+
+  <table>
+    <tr><td style="width: 200px; height: 36px; line-height: 36px;">本地版本：</td><td>{{versionLocal}}</td></tr>
+    <tr><td style="width: 200px; height: 36px; line-height: 36px;">最新版本：</td><td>{{upgradeService.packageInfo.version}}</td></tr>
+    <tr><td style="width: 200px; height: 36px; line-height: 36px;">安装包大小：</td><td>{{upgradeService.packageInfo.size}} M</td></tr>
+  </table>
+  <form>
+    <!--修复点标志：qazxsw-->
+    <!--<qx-checkbox [disabled]="packageInfo.level" binary="true" [(ngModel)]="dismissThisVersion" name="dismissThisVersion" label="忽略此版本"></qx-checkbox>-->
+    <span style="color: red;" >您无法跳过此次升级，否则无法正常运行！关闭窗口将直接退出程序！</span>
+    <span *ngIf="reDownload" style="color: red;" >安装包下载出错！</span>
+
+    <p *ngIf="downloading">
+      安装包正在下载中......
+      <md-progress-bar [color]="'primary'" [mode]="'indeterminate'"></md-progress-bar>
+    </p>
+    <!--<input *ngIf="downloading === versionCloud" type="button" value="取消下载" (click)="abort()">-->
+    <p style="text-align: center;">
+      <input *ngIf="installBtn" type="button" value="重启并安装新版本" (click)="setup();">
+      <input *ngIf="reDownload" type="button" value="重新下载" (click)="download();">
+    </p>
+
+
+  </form>
+
+
+

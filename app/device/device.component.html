@@ -1,0 +1,125 @@
+<div class="wb-device-style">
+    <span style="float: right;" (click)="dialogRef.close();closeIt()" class="material-icons">clear</span>
+	<div class="device-operate-area" [style.background-color]="deviceService.device ? deviceService.device.status === 0 ? 'rgb(240,173,78)' : deviceService.device.status === 1 ? 'rgb(35,153,229)' : deviceService.device.status === 2 ? 'rgb(92,184,92)' : deviceService.device.status === 3 ? 'rgb(217,83,79)': 'pink' : '#fff'"
+		 [style.color]="deviceService.device?'white':''">
+		<!--<span class="device-control-btn fa fa-fw fa-list" title="设备列表" (click)="openDeviceListWin()"></span>-->
+		<!--<button md-icon-button title="设备列表" style="width: auto; height: auto; line-height: 32px;" (click)="openDeviceListWin()">-->
+			<!--<md-icon svgIcon="ic-list" style="line-height: 32px;padding: 0px 10px;"></md-icon>-->
+		<!--</button>-->
+		<!--<span class="device-info-name">{{deviceService.device?deviceService.device.name:'当前无设备'}}</span>-->
+		<!--<button md-icon-button title="设备详情" style="width: auto; height: auto; line-height: 32px;" (click)="op1.toggle($event)" [mdMenuTriggerFor]="menu">-->
+    <!--<button md-icon-button title="设备详情" style="width: auto; height: auto; line-height: 32px;" [mdMenuTriggerFor]="menu">-->
+		<!--<md-icon svgIcon="ic-more" style="padding: 0px 5px;"></md-icon>-->
+		<!--</button>-->
+		<!--&lt;!&ndash;<span class="device-control-btn fa fa-fw fa-ellipsis-h" (click)="op1.toggle($event)" title="设备详情"></span>&ndash;&gt;-->
+	<!--</div>-->
+
+
+	<div >
+      <h3 style="text-align:center; padding: 0;">{{deviceService.device?deviceService.device.name:'空'}}</h3>
+      <md-list>
+        <md-list-item>
+          <div class="devicelist">ip：</div>
+          <div class="devicedetail">{{deviceService.device?deviceService.device.device_ip:'空'}}</div>
+        </md-list-item>
+        <md-list-item>
+          <div class="devicelist">状态：</div>
+          <div class="devicedetail">
+            <div>{{deviceService.device?'控制中':'空'}}</div>
+            <div *ngIf="deviceService.device">{{deviceService.device.status === 0 ? '未初始化' : deviceService.device.status === 1 ? '已初始化' : deviceService.device.status
+            === 2 ? '正在运行' : '故障'}}</div>
+          </div>
+        </md-list-item>
+        <md-list-item>
+          <div class="devicelist">程序：</div>
+          <div class="devicedetail">{{deviceService.device?deviceService.device.program_name:'空'}}</div>
+        </md-list-item>
+        <md-list-item>
+          <div class="devicelist">型号：</div>
+          <div class="devicedetail">{{deviceService.device?deviceService.device.model:'空'}}</div>
+        </md-list-item>
+        <md-list-item>
+          <div class="devicelist">版本号：</div>
+          <div class="devicedetail">{{deviceService.device?deviceService.device.version:'空'}}</div>
+        </md-list-item>
+        <md-list-item>
+          <div class="devicelist">序列号：</div>
+          <div class="devicedetail">{{deviceService.device?deviceService.device.serial:'空'}}</div>
+        </md-list-item>
+          <md-list-item>
+              <div class="control-button-box">
+                  <!--<button md-icon-button title="开始" style="width: 24px; height: 24px; line-height: 24px;" (click)="setDevicePower(true)"><md-icon><i [style.color]="deviceService.device && !deviceService.device.runDisabled && !deviceService.device.isRunning ?'':'rgb(214,214,214)'" class="material-icons">play_arrow</i></md-icon></button>
+                  <button md-icon-button title="暂停" style="width: 24px; height: 24px; line-height: 24px;" (click)="setDevicePower(false)"><md-icon><i [style.color]="deviceService.device && !deviceService.device.stopDisabled && !deviceService.device.isStopping?'':'rgb(214,214,214)'" class="material-icons">pause</i></md-icon></button>-->
+                  <button md-icon-button title="开始" style="width: 24px; height: 24px; line-height: 24px;" (click)="setDevicePower(true)"><md-icon><i [style.color]="deviceService.device && !deviceService.device.runDisabled && !deviceService.device.isRunning ?'':'rgb(214,214,214)'" class="material-icons">play_arrow</i></md-icon></button>
+                  <button md-icon-button title="暂停" style="width: 24px; height: 24px; line-height: 24px;" (click)="setDevicePower(false)"><md-icon><i [style.color]="deviceService.device && !deviceService.device.stopDisabled && !deviceService.device.isStopping?'':'rgb(214,214,214)'" class="material-icons">pause</i></md-icon></button>
+                  <!--<button md-icon-button title="暂停" style="width: 24px; height: 24px; line-height: 24px;"><md-icon svgIcon="ic-pause" [style.color]="deviceService.device && !deviceService.device.stopDisabled && !deviceService.device.isStopping?'':'rgb(214,214,214)'"
+                                      (click)="setDevicePower(false)"></md-icon></button>-->
+                  <span style="display: flex;width: 150px;height: 30px;justify-content: space-between;align-items: center">
+			<!--修复点标志：qazxsw-->
+                      <!--<qx-slider [(ngModel)]="speed" [style]="{'width':'120px'}" (onChange)="setDeviceSpeed()"></qx-slider>-->
+      <md-slider [disabled]="false" [thumb-label]="true" [max]="1" [min]="0.1" [step]="0.1" [value]="speed" [(ngModel)]="speed" (change)="setDeviceSpeed()">
+      </md-slider>
+      <span>{{speed === 1?1:speed.toFixed(1)}}</span>
+    </span>
+              </div>
+          </md-list-item>
+        <md-list-item>
+          <!--<button md-raised-button style="background-color:#0099ff; color: white; min-width: 60px; margin-right: 10px;" (click)="disconnectDevice()" [disabled]="deviceService.device?false:true">释放</button>
+          <button md-raised-button style="background-color:#0099ff; color: white; min-width: 60px; margin-right: 10px;" (click)="openInitWindow()" *ngIf="deviceService.device " [disabled]="deviceService.device.initDisabled">初始化</button>
+          <button md-raised-button style="background-color:#0099ff; color: white; min-width: 60px;" [disabled]="deviceService.device?false:true">关机</button>-->
+          <button md-raised-button style=" min-width: 60px; margin-right: 10px;" (click)="disconnectDevice()" [disabled]="deviceService.device?false:true">释放</button>
+<!--
+          <button md-raised-button style="min-width: 60px; margin-right: 10px;" (click)="openInitWindow()" *ngIf="deviceService.device " [disabled]="deviceService.device.initDisabled">初始化</button>
+-->
+          <button md-raised-button style="min-width: 60px; margin-right: 10px;" (click)="openInitWindow()" *ngIf="deviceService.device " [disabled]="deviceService.device ? deviceService.device.status === 0 ? false : deviceService.device.status === 1 ? true : deviceService.device.status === 2 ? true : deviceService.device.status === 3 ? false : true :true">初始化</button>
+          <button md-raised-button style="min-width: 60px;" (click)="devicePowerOff();" [disabled]="deviceService.device?false:true">关机</button>
+        </md-list-item>
+      </md-list>
+    </div>
+
+
+	<!--修复点标志：qazxsw-->
+	<!--<qx-overlayPanel #op1>
+        <h6 style="text-align:center;">{{deviceService.device?deviceService.device.name:'空'}}</h6>
+    <div class="ui-g">
+        <div class="ui-g-4">ip：</div>
+        <div class="ui-g-8">{{deviceService.device?deviceService.device.ip:'空'}}</div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-4">状态：</div>
+        <div class="ui-g-4">{{deviceService.device?'控制中':'空'}}</div>
+        <div class="ui-g-4" *ngIf="deviceService.device">{{deviceService.device.status === 0 ? '未初始化' : deviceService.device.status === 1 ? '已初始化' : deviceService.device.status
+            === 2 ? '正在运行' : '故障'}}</div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-4">程序：</div>
+        <div class="ui-g-8">{{deviceService.device?deviceService.device.program_name:'空'}}</div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-4">型号：</div>
+        <div class="ui-g-8">{{deviceService.device?deviceService.device.model:'空'}}</div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-4">版本号：</div>
+        <div class="ui-g-8">{{deviceService.device?deviceService.device.version:'空'}}</div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-4">序列号：</div>
+        <div class="ui-g-8">{{deviceService.device?deviceService.device.serial:'空'}}</div>
+    </div>
+    <div class="ui-g">
+        <button pButton type="button" (click)="disconnectDevice()" [disabled]="deviceService.device?false:true" label="释放"></button>
+        <button pButton type="button" (click)="openInitWindow(op1)" *ngIf="deviceService.device " [disabled]="deviceService.device.initdisabled"
+            label="初始化"></button>
+        <button pButton type="button" [disabled]="deviceService.device?false:true" label="关机"></button>
+    </div>
+    </qx-overlayPanel>-->
+	<!--修复点标志：qazxsw-->
+	<!--<qx-panel title="设备列表" [(visible)]="deviceListDisplay">-->
+	<!--<app-device-list *ngIf="deviceListDisplay"></app-device-list>-->
+	<!--</qx-panel>-->
+	<!--<qx-panel title="设备初始化" [(visible)]="deviceInitDisplay">-->
+	<!--<app-device-init *ngIf="deviceInitDisplay" (closeInitDialog)="deviceInitDisplay=false"></app-device-init>-->
+	<!--</qx-panel>-->
+</div>
+</div>
