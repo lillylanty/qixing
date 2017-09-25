@@ -1,0 +1,17 @@
+  h3 {
+    text-align: center;
+  }
+  input[type=text], input[type=password] {
+    height: 2em;
+  }
+
+  .example-section {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      height: 60px;
+  }
+
+  .example-margin {
+      margin: 10px;
+  }

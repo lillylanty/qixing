@@ -1,0 +1,50 @@
+<md-list *ngIf = "type === 'userInfo'">
+  <p><md-icon style="float: right;cursor:pointer" (click)="dialogRef.close()">clear</md-icon></p>
+  <md-list-item>  当前账户：{{user.account}}  </md-list-item>
+  <md-list-item> 用户昵称：{{user.nickname}} </md-list-item>
+  <md-list-item> 手机号码 ：{{user.phone ? user.phone : '没有手机号码'}} </md-list-item>
+  <md-list-item> 邮箱：{{user.email ? user.email : '没有邮箱'}}</md-list-item>
+</md-list>
+
+<div *ngIf = "type === 'shortcut'">
+ <!--<app-activation></app-activation>-->
+ <app-set-shortcut></app-set-shortcut>
+</div>
+
+<div *ngIf="type === 'version'">
+    <md-card> <md-icon style="float: right;cursor: pointer" (click)="dialogRef.close('cancel')">clear</md-icon>
+        <md-card-header>版本信息 </md-card-header>
+        <md-card-content>
+            <p>当前版本: {{upgradeService.versionLocal}}</p>
+            <p *ngIf="!updateVer">当前已是最新版本！</p>
+            <p *ngIf="updateVer">最新版本：{{upgradeService.packageInfo.version}}</p>
+            <p *ngIf="updateVer">新增功能：{{upgradeService.packageInfo.description}}</p>
+        </md-card-content>
+        <md-card-actions *ngIf="updateVer">
+            <button md-button (click)="dialogRef.close('update')">更新</button>
+            <button md-button (click)="dialogRef.close('cancel')">取消</button>
+        </md-card-actions>
+    </md-card>
+</div>
+
+<div *ngIf="type === 'gateway'">
+    <h3 flex fxLayoutAlign="start center" style="margin: 0px;">ip设置</h3>
+    <h3 style="position: absolute; right: 20px; top: 0; cursor: pointer;">
+        <md-icon (click)="closeDialog(false);">clear</md-icon>
+    </h3>
+    <br><br>
+    <section class="example-section">
+        <md-input-container class="example-margin">
+            <input mdInput (ngModelChange)="ipModifySave(1);" placeholder="value" [(ngModel)]="userService.netval1">
+        </md-input-container>
+        <md-input-container class="example-margin">
+            <input mdInput placeholder="value" (ngModelChange)="ipModifySave(2);" [(ngModel)]="userService.netval2">
+        </md-input-container>
+        <md-input-container class="example-margin">
+            <input mdInput placeholder="value" (ngModelChange)="ipModifySave(3);" [(ngModel)]="userService.netval3">
+        </md-input-container>
+    </section>
+    <br><br>
+    <button style="margin-left: 180px;" (click)="closeDialog(false);" md-raised-button>取消</button>
+    <button style="margin-left: 80px;" (click)="closeDialog(true);" md-raised-button [disabled]="ipSave">保存</button>
+</div>

@@ -1,0 +1,25 @@
+<div class="main drag-window" fxFlexFill fxLayout="column" fxLayoutAlign="space-between stretch">
+    <header fxFlex="40px" fxLayout="row">
+        <div fxFlex class="drag-window"></div>
+        <div fxFlex="150px" class="no-drag-window" id="window-ctl-btn">
+          <span class="icon-hover min-window" (click)="onMinimizeWin()" title="最小化"></span>
+          <span [ngClass]="{'icon-hover':true,'maximize':!isMaximize,'restore':isMaximize}" (click)="onMaximizeWin()" title="{{isMaximize?'还原':'最大化'}}"></span>
+          <span class="close-window" (click)="onCloseWin()" title="关闭"></span>
+        </div>
+    </header>
+    <main fxFlex fxLayoutAlign="center center">
+        <form fxLayout="column" class="no-drag-window" #userForm="ngForm">
+            <md-input-container class="example-full-width">
+                <input mdInput type="text" placeholder="账号"  [(ngModel)]="user.account" name="account" required/>
+            </md-input-container>
+            <md-input-container class="example-full-width">
+            <input mdInput type="password" placeholder="密码" [(ngModel)]="user.password"  name ="password" required/>
+            </md-input-container>
+            <button md-raised-button type="submit" [disabled]="!userForm.form.valid" (click)="login()">登录</button>
+        </form>
+        <div id="prompt" *ngIf="promptChecking">登录成功，开始更新设备授权证书 ......</div>
+    </main>
+    <footer fxFlex = "30px" fxLayoutAlign="center center" style="background-color: rgb(0, 122, 204)">
+        
+    </footer>
+</div>
